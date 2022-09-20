@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "name": "Profit",
-    "date": "2021-01-05T19:30+0200"
+    "name": "Onboarding - first day",
+    "date": "2022-05-17T09:00+0800"
   },
   {
     "id": 2,
-    "name": "Learn React",
-    "date": "2021-01-03T17:00+0200"
+    "name": "Offboarding - last day",
+    "date": "2022-09-16T18:00+0800"
   }
 ]

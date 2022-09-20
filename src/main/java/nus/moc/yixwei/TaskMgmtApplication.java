@@ -6,9 +6,13 @@ import io.dropwizard.setup.Environment;
 import nus.moc.yixwei.core.DummyTaskRepository;
 import nus.moc.yixwei.core.TaskRepository;
 import nus.moc.yixwei.resources.TaskResource;
+import org.eclipse.jetty.servlets.CrossOriginFilter;
 
+import javax.servlet.DispatcherType;
+import javax.servlet.FilterRegistration;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.EnumSet;
 
 public class TaskMgmtApplication extends Application<TaskMgmtConfiguration> {
 
@@ -30,6 +34,18 @@ public class TaskMgmtApplication extends Application<TaskMgmtConfiguration> {
     public void run(final TaskMgmtConfiguration configuration,
                     final Environment environment) {
         // TODO: implement application
+        // Enable CORS headers
+        final FilterRegistration.Dynamic cors =
+                environment.servlets().addFilter("CORS", CrossOriginFilter.class);
+
+        // Configure CORS parameters
+        cors.setInitParameter("allowedOrigins", "*");
+        cors.setInitParameter("allowedHeaders", "X-Requested-With,Content-Type,Accept,Origin");
+        cors.setInitParameter("allowedMethods", "OPTIONS,GET,PUT,POST,DELETE,HEAD");
+
+        // Add URL mapping
+        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
+
         DateFormat eventDateFormat = new SimpleDateFormat(configuration.getDateFormat());
         environment.getObjectMapper().setDateFormat(eventDateFormat);
         TaskRepository repository = new DummyTaskRepository();
