@@ -1,0 +1,7 @@
+logging:
+  level: INFO
+  loggers:
+    nus.moc.yixwei: DEBUG
+#server:
+#  rootPath: /api/*
+dateFormat: yyyy-MM-dd'T'HH:mmZ
