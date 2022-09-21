@@ -32,7 +32,7 @@ public class TaskResource {
 
     @POST
     public String create(Task task) {
-        taskDao.insert(taskDao.findAll().size()+1, task.getName(), task.getDate());
+        taskDao.insert(taskDao.findLargestId()+1, task.getName(), task.getDate());
         return String.format("Created task %s", taskDao.findAll().size());
     }
 

@@ -18,6 +18,9 @@ public interface TaskDAO {
     @RegisterBeanMapper(Task.class)
     Optional<Task> findById(@Bind("id") int id);
 
+    @SqlQuery("select max(id) from task")
+    int findLargestId();
+
     @SqlUpdate("insert into task (id, name, date) values (:id, :name, :date)")
     void insert(@Bind("id") int id, @Bind("name") String name, @Bind("date") String date);
 
