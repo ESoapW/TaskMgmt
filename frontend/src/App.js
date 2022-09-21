@@ -1,3 +1,4 @@
+/* eslint eqeqeq: 0 */
 import './App.css'
 import React, {useEffect, useState} from 'react'
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined'
@@ -29,7 +30,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}     
-      <Link color="inherit" href="https://esoapw.github.io/yixin-wei/Home.html">
+      <Link color="inherit" href="https://esoapw.github.io/yixin-wei/Home.html" target="_blank" rel="noopener">
         Wei Yixin
       </Link>{' '}
       {new Date().getFullYear()}
@@ -41,10 +42,10 @@ function Copyright(props) {
 // Transform dateFormat to be IO friendly: yyyy-MM-dd'T'HH:mmZ
 function getDateIO(date) {
   let dateIO = String(date.getFullYear()) + '-' +
-               String(date.getMonth()+1) + '-' +
-               String(date.getDate()) + 'T' +
-               String(date.getHours()) + ':' +
-               String(date.getMinutes()) + '+0800'
+               String(("0"+(date.getMonth()+1)).slice(-2)) + '-' +
+               String(("0"+date.getDate()).slice(-2)) + 'T' +
+               String(("0"+date.getHours()).slice(-2)) + ':' +
+               String(("0"+date.getMinutes()).slice(-2)) + '+0800'
   return dateIO
 }
 
@@ -72,10 +73,6 @@ async function deleteTask(id) {
       console.log(res.data)
     })
     .catch(err => console.log(err))
-}
-
-function test(id) {
-  console.log(id)
 }
 
 

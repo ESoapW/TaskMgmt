@@ -1,12 +1,12 @@
 package nus.moc.yixwei;
 
 import io.dropwizard.Application;
+import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import nus.moc.yixwei.core.DummyTaskRepository;
-import nus.moc.yixwei.core.TaskRepository;
 import nus.moc.yixwei.resources.TaskResource;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
+import org.jdbi.v3.core.Jdbi;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
@@ -46,11 +46,14 @@ public class TaskMgmtApplication extends Application<TaskMgmtConfiguration> {
         // Add URL mapping
         cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
 
+        // Custom date format
         DateFormat eventDateFormat = new SimpleDateFormat(configuration.getDateFormat());
         environment.getObjectMapper().setDateFormat(eventDateFormat);
-        TaskRepository repository = new DummyTaskRepository();
-        TaskResource taskResource = new TaskResource(repository);
-        environment.jersey().register(taskResource);
+
+        // JDBI factory
+        final JdbiFactory factory = new JdbiFactory();
+        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "postgresql");
+        environment.jersey().register(new TaskResource(jdbi));
     }
 
 }

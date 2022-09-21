@@ -1,13 +1,11 @@
 package nus.moc.yixwei.api;
 
-import java.util.Date;
-
 public class Task {
     private int id;
     private String name;
-    private Date date;
+    private String date;
 
-//    public Task(int id, String name, Date date) {
+//    public Task(int id, String name, String date) {
 //        this.id = id;
 //        this.name = name;
 //        this.date = date;
@@ -21,7 +19,7 @@ public class Task {
         return name;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -33,7 +31,7 @@ public class Task {
         this.name = newName;
     }
 
-    public void setDate(Date newDate) {
+    public void setDate(String newDate) {
         this.date = newDate;
     }
 
