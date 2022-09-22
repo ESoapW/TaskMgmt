@@ -350,7 +350,7 @@ export default function Home() {
               </Grid>
               <Grid item >
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   onClick={handleInitTask}
                 >
                   Initialize data
