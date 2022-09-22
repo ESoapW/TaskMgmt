@@ -206,6 +206,7 @@ export default function Home() {
                     name="addName"
                     autoComplete="name"
                     autoFocus
+                    inputProps={{ maxLength: 80 }}
                     onChange={(event) => {setInputAddName(event.target.value)}}
                   />
                 </Grid>
@@ -260,6 +261,7 @@ export default function Home() {
                     id="updateId"
                     label="ID"
                     autoFocus
+                    inputProps={{ maxLength: 5 }}
                     onChange={(event) => {setInputUpdateId(event.target.value)}}
                     value={inputUpdateId}
                   />
@@ -291,6 +293,7 @@ export default function Home() {
                     label="Description"
                     name="updateName"
                     autoComplete="name"
+                    inputProps={{ maxLength: 80 }}
                     onChange={(event) => {setInputUpdateName(event.target.value)}}
                   />
                 </Grid>
