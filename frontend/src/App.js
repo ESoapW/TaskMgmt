@@ -75,6 +75,14 @@ async function deleteTask(id) {
     .catch(err => console.log(err))
 }
 
+async function initTask() {
+  API.post(`tasks/init`)
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => console.log(err))
+}
+
 
 const theme = createTheme()
 
@@ -150,6 +158,16 @@ export default function Home() {
     if (window.confirm(`Do you want to delete task ${selected} ?`)){
       checked.forEach(deleteTask)
       alert(`Successfully deleted task ${selected} !`)
+      window.location.reload()
+    } else {
+      return
+    }
+  }
+
+  const handleInitTask = (event) => {
+    event.preventDefault()
+    if (window.confirm(`Do you want to initialize tasks data?`)){
+      initTask();
       window.location.reload()
     } else {
       return
@@ -318,15 +336,28 @@ export default function Home() {
             })}
           </List>
 
-          <Button
-            disabled={checked.length==0}
-            variant="contained"
-            sx={{ bgcolor: "#f00e0e", mt: 3, mb: 2 }}
-            onClick={handleDeleteTask}
-          >
-            Delete
-          </Button>
-          
+          <Box sx={{ mt:3 }}>
+            <Grid container spacing={8}>
+              <Grid item>
+                <Button
+                  disabled={checked.length==0}
+                  variant="contained"
+                  sx={{ bgcolor: "#f00e0e"}}
+                  onClick={handleDeleteTask}
+                >
+                  Delete
+                </Button>
+              </Grid>
+              <Grid item >
+                <Button
+                  variant="contained"
+                  onClick={handleInitTask}
+                >
+                  Initialize data
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>

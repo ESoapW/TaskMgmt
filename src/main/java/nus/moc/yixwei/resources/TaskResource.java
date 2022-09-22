@@ -55,4 +55,13 @@ public class TaskResource {
         taskDao.delete(id);
         return String.format("Deleted task %s", id);
     }
+
+    @POST
+    @Path("/init")
+    public String initData() {
+        taskDao.dropExistingTable();
+        taskDao.createTaskTable();
+        taskDao.insertInitData();
+        return "Initialized tasks data";
+    }
 }

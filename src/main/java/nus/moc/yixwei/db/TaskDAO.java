@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TaskDAO {
+    @SqlQuery("select 1")
+    int ping();
+
     @SqlQuery("select * from task order by date desc, id desc")
     @RegisterBeanMapper(Task.class)
     List<Task> findAll();
@@ -29,6 +32,15 @@ public interface TaskDAO {
 
     @SqlUpdate("delete from task where id = :id")
     void delete(@Bind("id") int id);
+
+    @SqlUpdate("DROP TABLE IF EXISTS task")
+    void dropExistingTable();
+
+    @SqlUpdate("CREATE TABLE task (id Integer NOT NULL primary key, name varchar(100) NOT NULL, date varchar(100) NOT NULL)")
+    void createTaskTable();
+
+    @SqlUpdate("insert into task (id, name, date) values (1, 'Onboarding - first day', '2022-05-17T09:00+0800'), (2, 'Offboarding - last day', '2022-09-16T18:00+0800')")
+    void insertInitData();
 }
 
 

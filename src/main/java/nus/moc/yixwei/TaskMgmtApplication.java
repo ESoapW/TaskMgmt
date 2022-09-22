@@ -4,6 +4,8 @@ import io.dropwizard.Application;
 import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import nus.moc.yixwei.db.TaskDAO;
+import nus.moc.yixwei.health.DatabaseHealthCheck;
 import nus.moc.yixwei.resources.TaskResource;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.jdbi.v3.core.Jdbi;
@@ -34,9 +36,17 @@ public class TaskMgmtApplication extends Application<TaskMgmtConfiguration> {
     public void run(final TaskMgmtConfiguration configuration,
                     final Environment environment) {
         // TODO: implement application
+        // JDBI factory
+        final JdbiFactory factory = new JdbiFactory();
+        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "postgresql");
+        // Custom date format
+        DateFormat eventDateFormat = new SimpleDateFormat(configuration.getDateFormat());
         // Enable CORS headers
         final FilterRegistration.Dynamic cors =
                 environment.servlets().addFilter("CORS", CrossOriginFilter.class);
+
+        // Health check
+        environment.healthChecks().register("database", new DatabaseHealthCheck(jdbi.onDemand(TaskDAO.class)));
 
         // Configure CORS parameters
         cors.setInitParameter("allowedOrigins", "*");
@@ -46,13 +56,8 @@ public class TaskMgmtApplication extends Application<TaskMgmtConfiguration> {
         // Add URL mapping
         cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
 
-        // Custom date format
-        DateFormat eventDateFormat = new SimpleDateFormat(configuration.getDateFormat());
+        // register resources
         environment.getObjectMapper().setDateFormat(eventDateFormat);
-
-        // JDBI factory
-        final JdbiFactory factory = new JdbiFactory();
-        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "postgresql");
         environment.jersey().register(new TaskResource(jdbi));
     }
 
