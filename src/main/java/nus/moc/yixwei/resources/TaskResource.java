@@ -17,6 +17,10 @@ public class TaskResource {
         taskDao = jdbi.onDemand(TaskDAO.class);
     }
 
+    public TaskResource(TaskDAO newTaskDao) {
+        taskDao = newTaskDao;
+    }
+
     @GET
     public List<Task> allTasks() {
         return taskDao.findAll();
@@ -31,9 +35,12 @@ public class TaskResource {
     }
 
     @POST
+    // This input will be deserialized from json, task id will be 0 because it is not included in the input.
+    // The input task id does not matter because it will never be used.
     public String create(Task task) {
-        taskDao.insert(taskDao.findLargestId()+1, task.getName(), task.getDate());
-        return String.format("Created task %s", taskDao.findAll().size());
+        int cur_largest_id = taskDao.findLargestId();
+        taskDao.insert(++cur_largest_id, task.getName(), task.getDate());
+        return String.format("Created task %s", cur_largest_id);
     }
 
     @PUT

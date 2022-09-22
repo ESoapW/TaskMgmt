@@ -35,7 +35,6 @@ public class TaskMgmtApplication extends Application<TaskMgmtConfiguration> {
     @Override
     public void run(final TaskMgmtConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
         // JDBI factory
         final JdbiFactory factory = new JdbiFactory();
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "postgresql");
