@@ -167,7 +167,7 @@ export default function Home() {
   const handleInitTask = (event) => {
     event.preventDefault()
     if (window.confirm(`Do you want to initialize tasks data?`)){
-      initTask();
+      initTask()
       window.location.reload()
     } else {
       return
@@ -310,7 +310,7 @@ export default function Home() {
             </AccordionDetails>
           </Accordion>
           
-          <List dense sx={{ width: '50%', mt: 6, bgcolor: '#ececec' }}>
+          <List data-testid='taskList' dense sx={{ width: '50%', mt: 6, bgcolor: '#ececec' }}>
             {allTaskData.map((task) => {
               const labelId = `checkbox-list-secondary-label-${task.id}`
               return (
