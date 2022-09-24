@@ -16,7 +16,6 @@ If you want to build and run without docker
 * node >= 8.6.0
 * npm >= 17
 
-If you encounter permission issues, run all commands with `sudo`
 
 ### 1. Set up and start PostgreSQL database
 0. Make sure docker is running
@@ -83,3 +82,17 @@ npm start
 ```
 
 To access the web app enter url: `http://localhost:3000`   
+<br/>
+
+### 4. Troubleshoot
+1. If you encounter permission issues, run all commands with `sudo`   
+2. If you are using Linux and get `UnknownHostException: host.docker.internal not known`, change `host.docker.internal` to `localhost` in config.yml, rebuild the image and run with:
+   ```
+   docker run -dit --network host --name taskmgmt-backend-deploy --rm taskmgmt-backend:v1 
+   ```
+3. If you are using a cloud instance and can't connect, check your ingress rules and firewall.
+   An example of turning off firewall (Oracle Linux and RHEL)
+   ```
+   sudo systemctl stop firewalld 
+   sudo systemctl disable firewalld 
+   ```
