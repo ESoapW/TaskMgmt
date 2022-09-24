@@ -9,7 +9,7 @@ Go to [http://193.122.179.160:3000/](http://193.122.179.160:3000/) to try out
 
 ### 0. Requirements
 * docker >= 18.03
-* docker-compose   
+* docker-compose-plugin   
 
 If you want to build and run without docker
 * openjdk 11
