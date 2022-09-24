@@ -3,7 +3,7 @@ This project is a simple RESTful web application built with DropWizard, JDBI3, R
 
 ## Access via public address
 This project has been deployed on [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/)   
-Go to [url](https://www.oracle.com/cloud/) to try out
+Go to [http://193.122.179.160:3000/](http://193.122.179.160:3000/) to try out
 
 ## Set up and run on your local machine
 
@@ -100,3 +100,4 @@ To access the web app enter url: `http://localhost:3000`
    ```
    docker build --network host -t taskmgmt-frontend:v1 . 
    ```
+5. If you are using Linux and get "net::ERR_CONNECTION_REFUSED" after opening the frontend webpage and seeing nothing, you need to go to `frontend/src/baseUrl.js`, change `localhost` to `<your-host-IP-address>`
