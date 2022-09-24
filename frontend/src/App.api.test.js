@@ -1,23 +1,24 @@
-import axios from 'axios'
 import API from './baseUrl'
 import userEvent from '@testing-library/user-event'
 import { render, screen, act} from '@testing-library/react'
 
 import App from './App'
-import { scryRenderedComponentsWithType } from 'react-dom/test-utils'
-import { Update } from '@mui/icons-material'
 
+// mock axios instance (axios.create())
 jest.mock(`./baseUrl`)
 
-
+// mock window.alert()
 const alertMock = jest.spyOn(window,'alert').mockImplementation() 
 
+// delete primitive window.location and mock window.location.reload()
 delete window.location
 window.location = { reload: jest.fn() }
 const reloadMock = jest.spyOn(window.location, 'reload').mockImplementation()
 
+// mock window.confirm
 window.confirm = jest.fn().mockImplementation(() => true)
 
+// initial data
 const tasks = [
     { id: '1', name: 'Onboarding - first day', date: '2022-05-17T09:00+0800' },
     { id: '2', name: 'Offboarding - last day', date: '2022-09-16T18:00+0800' }
@@ -25,10 +26,12 @@ const tasks = [
 
 describe('App', () => {
     test('fetches tasks from an API and displays them', async () => {
+      // mock API.get
       API.get.mockImplementationOnce(() => 
         Promise.resolve({ data: tasks })
       )
-
+      
+      // wait for the promise, then render App
       await act(async() => {
         render(<App />) 
       })
@@ -38,12 +41,15 @@ describe('App', () => {
     })
 
     test('creates a task and post to API', async () => {
+        // data will appear in console (console.log() in main logic)
         const create_task = { id: '3', name: 'Create test', date: '2022-05-17T09:00+0800' }
 
+        // need to mock get first, because empty promise will lead to error (in main logic)
         API.get.mockImplementationOnce(() => 
           Promise.resolve({ data: tasks })
         )
 
+        // mock post
         API.post.mockImplementationOnce(() => 
           Promise.resolve({ data: create_task })
         )
@@ -73,6 +79,7 @@ describe('App', () => {
     })
 
     test('updates a task and put to API', async () => {
+        // data will appear in console (console.log() in main logic)
         const update_task = { id: '1', name: 'Update test', date: '2022-05-17T09:00+0800' }
 
         API.get.mockImplementationOnce(() => 
