@@ -67,7 +67,7 @@ To see the application's health enter url `http://localhost:8081/healthcheck`
 
 To check the application running enter url: `http://localhost:8080/tasks`   
 You should see the initialized data   
-   
+<br/>
    
 ### Start frontend service
 Go to the `frontend` directory
