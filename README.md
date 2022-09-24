@@ -7,17 +7,14 @@ Go to [url](https://www.oracle.com/cloud/) to try out
 
 ## Set up and run on your local machine
 
-### 0. Prerequisites
-Make sure you have docker installed with version >= 18.03
-```
-docker -v 
-```
-If you want to build and run without docker, make sure you have java = openjdk11, node >= 8.6.0, npm >= 17
-```
-java -version 
-node -v 
-npm -v 
-```
+### 0. Requirements
+* docker >= 18.03
+* docker-compose   
+
+If you want to build and run without docker
+* openjdk 11
+* node >= 8.6.0
+* npm >= 17
 
 ### 1. Set up and start PostgreSQL database
 0. Make sure docker is running
@@ -44,10 +41,8 @@ docker-compose down
 ```
 
 ### 2. Start backend service
-Go back to the project directory `TaskMgmt`
-```
-cd ..
-```
+Go back to the `TaskMgmt` directory: `cd ..`
+
 #### Run with docker (Recommended)
 ```
 docker build -t taskmgmt-backend:v1 . 
@@ -56,7 +51,6 @@ docker run -dit -p 8080:8080 -p 8081:8081 --name taskmgmt-backend-deploy --rm ta
 
 #### Run without docker
 First, go to `config.yml`, change database url `host.docker.internal` to `localhost`   
-Run the following commands
 ```
 mvn clean install 
 java -jar target/TaskMgmt-1.0-SNAPSHOT.jar server config.yml 
@@ -70,10 +64,7 @@ You should see the initialized data
 <br/>
    
 ### 3. Start frontend service
-Go to the `frontend` directory
-```
-cd frontend
-```
+Go to the `frontend` directory: `cd frontend`
 
 #### Run with docker (Recommended)
 ```
