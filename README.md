@@ -35,7 +35,7 @@ If you want to build and run without docker
    Copy and run the sql queries in `initData.sql` to initialize the database   
    The output messages should be "Query returned successfully"    
 
-You have not successfully set up the database.   
+You have now successfully set up the database.   
 After finishing using, return to this directory, run this command to stop it
 ```
 docker compose down 
