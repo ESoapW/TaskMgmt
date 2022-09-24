@@ -31,7 +31,7 @@ npm -v
    Add a new server with properties:  
    Name: `TaskMgmt`, Host name/address: `postgres`, Port: `5432`
 4. Right-click `Database`, click `Create` -> `Database`   
-   Add a new database with properties   
+   Add a new database with properties:   
    Database: `TasksRepo`, Owner: `postgres`   
 5. Right-click `TasksRepo`, select `Query Tool` to open the query tool   
    Copy and run the sql queries in `initData.sql` to initialize the database   
