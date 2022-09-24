@@ -1,13 +1,92 @@
-# TaskMgmt
+# Task Management System
+This project is a simple RESTful web application built with DropWizard, JDBI3, React.js and PostgresQL. It also uses Junit, Assertj, Mockito, Jest, React-testing-library for testing and docker for containerization.
 
-How to start the TaskMgmt application
----
+## Access via public address
+This project has been deployed on [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/)   
+Go to [url](https://www.oracle.com/cloud/) to try out
 
-1. Run `mvn clean install` to build your application
-1. Start application with `java -jar target/TaskMgmt-1.0-SNAPSHOT.jar server config.yml`
-1. To check that your application is running enter url `http://localhost:8080`
+## Set up and run on your local machine
 
-Health Check
----
+### Prerequisites
+Make sure you have docker installed with version >= 18.03
+```
+docker -v 
+```
+If you want to build and run without docker, make sure you have java = openjdk11, node >= 8.6.0, npm >= 17
+```
+java -version 
+node -v 
+npm -v 
+```
 
-To see your applications health enter url `http://localhost:8081/healthcheck`
+### Set up and start PostgreSQL database
+0. Make sure docker is running
+1. Run the following commands to start the database
+   ```
+   cd compose-postgres 
+   docker-compose up -d 
+   ```
+2. Go to `localhost:5050/browser`, password: `changeme`
+3. Right-click `Servers`, click `Register` -> `Server`   
+   Add a new server with properties:  
+   Name: `TaskMgmt`, Host name/address: `postgres`, Port: `5432`
+4. Right-click `Database`, click `Create` -> `Database`   
+   Add a new database with properties   
+   Database: `TasksRepo`, Owner: `postgres`   
+5. Right-click `TasksRepo`, select `Query Tool` to open the query tool   
+   Copy and run the sql queries in `initData.sql` to initialize the database   
+   The output messages should be "Query returned successfully"    
+
+You have not successfully set up the database.   
+After finishing using, return to this directory, run this command to stop it
+```
+docker-compose down 
+```
+
+### Start backend service
+Go back to the project directory `TaskMgmt`
+```
+cd ..
+```
+#### Run with docker (Recommended)
+```
+docker build -t taskmgmt-backend:v1 . 
+docker run -dit -p 8080:8080 -p 8081:8081 --name taskmgmt-backend-deploy --rm taskmgmt-backend:v1 
+```
+
+#### Run without docker
+First, go to `config.yml`, change database url `host.docker.internal` to `localhost`   
+Run the following commands
+```
+mvn clean install 
+java -jar target/TaskMgmt-1.0-SNAPSHOT.jar server config.yml 
+```
+
+#### Health Check
+To see your applications' health enter url `http://localhost:8081/healthcheck`
+
+Enter the following url: `http://localhost:8080/tasks`   
+You should see the initialized data
+
+### Start frontend service
+Go to the `frontend` directory
+```
+cd frontend
+```
+
+#### Run with docker (Recommended)
+```
+docker build -t taskmgmt-frontend:v1 . 
+docker run -dit -p 3000:3000 --name taskmgmt-frontend-deploy --rm taskmgmt-frontend:v1 
+```
+
+#### Run without docker
+```
+npm install 
+npm run build 
+npm test 
+npm start 
+```
+
+Enter the following url: `http://localhost:3000`   
+You should see the web app

@@ -10,13 +10,15 @@ database:
   driverClass: org.postgresql.Driver
 
   # the username
-  user: db_user
+  user: postgres
 
   # the password
-  password: password
+  password: changeme
 
   # the JDBC URL
-  url: jdbc:postgresql://localhost:5432/TasksRepo
+  # run locally: jdbc:postgresql://localhost:5432/TasksRepo
+  # run in docker: jdbc:postgresql://host.docker.internal:5432/TasksRepo
+  url: jdbc:postgresql://host.docker.internal:5432/TasksRepo
 
   # any properties specific to your JDBC driver:
   properties:
