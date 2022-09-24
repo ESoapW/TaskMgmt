@@ -26,7 +26,7 @@ If you want to build and run without docker
 2. Go to `localhost:5050/browser`, password: `changeme`
 3. Right-click `Servers`, click `Register` -> `Server`   
    Add a new server with properties:  
-   Name: `TaskMgmt`, Host name/address: `postgres`, Port: `5432`
+   Name: `TaskMgmt`, Host name/address: `postgres`, Port: `5432`, Password: `changeme`
 4. Right-click `Database`, click `Create` -> `Database`   
    Add a new database with properties:   
    Database: `TasksRepo`, Owner: `postgres`   
