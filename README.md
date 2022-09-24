@@ -16,6 +16,8 @@ If you want to build and run without docker
 * node >= 8.6.0
 * npm >= 17
 
+If you encounter permission issues, run all commands with `sudo`
+
 ### 1. Set up and start PostgreSQL database
 0. Make sure docker is running
 1. Run the following commands to start the database
