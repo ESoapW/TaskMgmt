@@ -7,7 +7,7 @@ Go to [url](https://www.oracle.com/cloud/) to try out
 
 ## Set up and run on your local machine
 
-### Prerequisites
+### 0. Prerequisites
 Make sure you have docker installed with version >= 18.03
 ```
 docker -v 
@@ -19,7 +19,7 @@ node -v
 npm -v 
 ```
 
-### Set up and start PostgreSQL database
+### 1. Set up and start PostgreSQL database
 0. Make sure docker is running
 1. Run the following commands to start the database
    ```
@@ -43,7 +43,7 @@ After finishing using, return to this directory, run this command to stop it
 docker-compose down 
 ```
 
-### Start backend service
+### 2. Start backend service
 Go back to the project directory `TaskMgmt`
 ```
 cd ..
@@ -69,7 +69,7 @@ To check the application running enter url: `http://localhost:8080/tasks`
 You should see the initialized data   
 <br/>
    
-### Start frontend service
+### 3. Start frontend service
 Go to the `frontend` directory
 ```
 cd frontend
