@@ -66,8 +66,8 @@ java -jar target/TaskMgmt-1.0-SNAPSHOT.jar server config.yml
 To see the application's health enter url `http://localhost:8081/healthcheck`
 
 To check the application running enter url: `http://localhost:8080/tasks`   
-You should see the initialized data
-<br/>
+You should see the initialized data   
+   
    
 ### Start frontend service
 Go to the `frontend` directory
