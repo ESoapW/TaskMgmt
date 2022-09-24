@@ -96,3 +96,7 @@ To access the web app enter url: `http://localhost:3000`
    sudo systemctl stop firewalld 
    sudo systemctl disable firewalld 
    ```
+4. If you are using Linux and get "npm ERR! network timeout" when building frontend image, run the following command to use DNS from host:
+   ```
+   docker build --network host -t taskmgmt-frontend:v1 . 
+   ```
