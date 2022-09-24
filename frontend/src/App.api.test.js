@@ -44,7 +44,7 @@ describe('App', () => {
         // data will appear in console (console.log() in main logic)
         const create_task = { id: '3', name: 'Create test', date: '2022-05-17T09:00+0800' }
 
-        // need to mock get first, because empty promise will lead to error (in main logic)
+        // need to mock get first, because empty promise will lead to error (in main logic), tasks can also be [], but cannot be null.
         API.get.mockImplementationOnce(() => 
           Promise.resolve({ data: tasks })
         )
