@@ -63,11 +63,11 @@ java -jar target/TaskMgmt-1.0-SNAPSHOT.jar server config.yml
 ```
 
 #### Health Check
-To see your applications' health enter url `http://localhost:8081/healthcheck`
+To see the application's health enter url `http://localhost:8081/healthcheck`
 
-Enter the following url: `http://localhost:8080/tasks`   
+To check the application running enter url: `http://localhost:8080/tasks`   
 You should see the initialized data
-   
+<br>
    
 ### Start frontend service
 Go to the `frontend` directory
@@ -89,5 +89,4 @@ npm test
 npm start 
 ```
 
-Enter the following url: `http://localhost:3000`   
-You should see the web app
+To access the web app enter url: `http://localhost:3000`   
