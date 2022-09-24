@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static io.dropwizard.jackson.Jackson.newObjectMapper;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -44,6 +43,7 @@ public class TaskResourceTest {
 
     @Test
     void getTaskSuccess() {
+        // use Mockito to mock return data
         when(DAO.findById(1)).thenReturn(Optional.of(task));
 
         Task found = EXT.target("/tasks/1").request().get(Task.class);
