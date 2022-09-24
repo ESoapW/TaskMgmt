@@ -21,7 +21,7 @@ If you want to build and run without docker
 1. Run the following commands to start the database
    ```
    cd compose-postgres 
-   docker-compose up -d 
+   docker compose up -d 
    ```
 2. Go to `localhost:5050/browser`, password: `changeme`
 3. Right-click `Servers`, click `Register` -> `Server`   
@@ -37,7 +37,7 @@ If you want to build and run without docker
 You have not successfully set up the database.   
 After finishing using, return to this directory, run this command to stop it
 ```
-docker-compose down 
+docker compose down 
 ```
 
 ### 2. Start backend service
