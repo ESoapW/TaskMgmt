@@ -8,7 +8,7 @@ This project is a simple RESTful web application built with DropWizard, JDBI3, R
 ## Access via public address
 This project has been deployed on [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/)   
 Go to [http://193.122.179.160:3000/](http://193.122.179.160:3000/) to try out.   
-The server is in Eastern United States, please wait a moment or refresh if the content can't be loaded.
+P.S. The server is in Eastern United States, please wait a moment or refresh if the content can't be loaded.
 
 ## Set up and run on your local machine
 
