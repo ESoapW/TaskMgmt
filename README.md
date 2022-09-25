@@ -18,6 +18,7 @@ P.S. The server is in eastern United States and the network connection might be 
 
 If you want to build and run without docker
 * openjdk 11
+* maven >= 3.8.5
 * node >= 8.6.0
 * npm >= 17
 
