@@ -1,6 +1,10 @@
 # Task Management System
 This project is a simple RESTful web application built with DropWizard, JDBI3, React.js and PostgresQL. It also uses Junit, Assertj, Mockito, Jest, React-testing-library for testing and docker for containerization.
 
+## Video Demo
+
+[Task Management System Video Demo](https://www.dropbox.com/s/q8skxv475wkeqhb/Task%20Management%20System%20Demo.mov?dl=0)
+
 ## Access via public address
 This project has been deployed on [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/)   
 Go to [http://193.122.179.160:3000/](http://193.122.179.160:3000/) to try out.   
