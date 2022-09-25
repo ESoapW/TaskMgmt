@@ -6,7 +6,7 @@ This project is a simple RESTful web application built with DropWizard, JDBI3, R
 [Task Management System Video Demo](https://www.dropbox.com/s/q8skxv475wkeqhb/Task%20Management%20System%20Demo.mov?dl=0)
 
 ## Access via public address
-This project has been deployed on [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/)   
+This project has been deployed on [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/).   
 Go to [http://193.122.179.160:3000/](http://193.122.179.160:3000/) to try out.   
 P.S. The server is in eastern United States and the network connection might be slow, please refresh the page if content does not load.
 
