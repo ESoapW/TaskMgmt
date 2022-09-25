@@ -3,12 +3,12 @@
 
 ## Requirements:
 * docker >= 17.12.0+
-* docker-compose
+* docker-compose-plugin
 
 ## Quick Start
 * Clone or download this repository
 * Go inside of directory,  `cd compose-postgres`
-* Run this command `docker-compose up -d`
+* Run this command `docker compose up -d`
 
 
 ## Environments
