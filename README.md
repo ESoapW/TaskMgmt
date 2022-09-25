@@ -30,15 +30,15 @@ If you want to build and run without docker
    cd compose-postgres 
    docker compose up -d 
    ```
-2. Go to `localhost:5050/browser`, password: `changeme`
-3. Right-click `Servers`, click `Register` -> `Server`   
+2. Go to <strong>localhost:5050/browser</strong>, password: `changeme`
+3. Right-click <strong>Servers</strong>, click <strong>Register</strong> -> <strong>Server</strong>   
    Add a new server with properties:  
    Name: `TaskMgmt`, Host name/address: `postgres`, Port: `5432`, Password: `changeme`
-4. Right-click `Database`, click `Create` -> `Database`   
+4. Right-click <strong>Database</strong>, click <strong>Create</strong> -> <strong>Database</strong>   
    Add a new database with properties:   
    Database: `TasksRepo`, Owner: `postgres`   
-5. Right-click `TasksRepo`, select `Query Tool` to open the query tool   
-   Copy and run the sql queries in `initData.sql` to initialize the database   
+5. Right-click <strong>TasksRepo</strong>, select <strong>Query Tool</strong> to open the query tool   
+   Copy and run the sql queries in <strong>initData.sql</strong> to initialize the database   
    The output messages should be "Query returned successfully"    
 
 You have now successfully set up the database.   
