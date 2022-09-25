@@ -95,7 +95,7 @@ To access the web app enter url: `http://localhost:3000`
    ```
    docker run -dit --network host --name taskmgmt-backend-deploy --rm taskmgmt-backend:v1 
    ```
-3. If you are using a cloud instance and can't connect, check your ingress rules and firewall.
+3. If you are using a cloud instance and can't connect, check your <strong>ingress rules</strong> and <strong>firewall</strong>.
    An example of turning off firewall (Oracle Linux and RHEL)
    ```
    sudo systemctl stop firewalld 
